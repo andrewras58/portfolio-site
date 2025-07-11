@@ -1,8 +1,21 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import z from "zod";
+
+import { Button } from "@/app/components/ui/button"
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+  FormDescription
+} from "@/app/components/ui/form"
+import { Input } from "@/app/components/ui/input"
+import { Textarea } from "@/app/components/ui/textarea";
 
 const schema = z.object({
   name: z.string().max(50).min(1, "Name is required"),
@@ -10,36 +23,66 @@ const schema = z.object({
   message: z.string().max(500).min(1, "Message is required"),
 });
 
-type FormFields = z.infer<typeof schema>;
+type formData = z.infer<typeof schema>;
 
 const ContactForm = () => {
-  const {
-    register,
-    handleSubmit,
-    setError,
-    formState: { errors, isSubmitting },
-  } = useForm<FormFields>({
-    resolver: zodResolver(schema),
-  });
 
-  const onSubmit: SubmitHandler<FormFields> = async (data) => {
-    // call to the api
-    console.log(data)
-  };
+  const form = useForm<formData>({
+    resolver: zodResolver(schema),
+  })
+
+  const onSubmit = (values: formData) => {
+    console.log(values);
+  }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <input {...register("name")} type="text" placeholder="Name" />
-      {errors.name && <div>{errors.name.message}</div>}
-      <input {...register("email")} type="text" placeholder="Email" />
-      {errors.email && <div>{errors.email.message}</div>}
-      <textarea {...register("message")} placeholder="Message" />
-      {errors.message && <div>{errors.message.message}</div>}
-      <button disabled={isSubmitting} type="submit">
-        {isSubmitting ? "Loading..." : "Submit"}
-      </button>
-      {errors.root && <div>{errors.root.message}</div>}
-    </form>
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full h-full max-w-3xl p-5 flex flex-col items-center" >
+        <FormDescription>
+          You can get in touch with me by sending a message below!
+        </FormDescription>
+        <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem className="w-full">
+              <FormLabel>Name</FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem className="w-full">
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="message"
+          render={({ field }) => (
+            <FormItem className="w-full">
+              <FormLabel>Message</FormLabel>
+              <FormControl>
+                <Textarea {...field} className="resize-none" />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button type="submit" className="cursor-pointer w-full">Submit</Button>
+      </form>
+    </Form>
   );
 };
 
