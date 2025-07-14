@@ -1,35 +1,3 @@
-// import Link from "next/link";
-// import React from "react";
-
-// // experience widget needs a title w/link, date, description, picture, and list of technologies used
-
-// const ExperienceWidget = ({
-//   title,
-//   link,
-//   date,
-//   description,
-//   picture,
-//   techList,
-// }: {
-//   title: string;
-//   link: string;
-//   date: string;
-//   description: string;
-//   picture: string;
-//   techList: string;
-// }) => {
-//   return (
-//     <div>
-//       <Link href={link}>{title}</Link>
-//       <p>{date}</p>
-//       <p>{description}</p>
-
-//     </div>
-//   );
-// };
-
-// export default ExperienceWidget;
-
 import {
   Card,
   CardAction,
@@ -55,7 +23,7 @@ const ExperienceWidget = ({
   date: string;
   description: string;
   picture: string;
-  techList: string;
+  techList: string[];
 }) => {
   return (
     <Card className="w-full max-w-3xl">
@@ -74,7 +42,11 @@ const ExperienceWidget = ({
         <p>{description}</p>
       </CardContent>
       <CardFooter>
-        <p>{techList}</p>
+        <ul className="flex justify-center items-center">
+          {techList.map((value, index) => (
+            <li key={index}><Image src={value} className="h-6 w-auto m-0.5"  alt="A technology I used" height={20} width={50}/></li>
+          ))}
+        </ul>
       </CardFooter>
     </Card>
   );
