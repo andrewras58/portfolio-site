@@ -1,6 +1,11 @@
 import React from "react";
 import PageLayout from "../components/PageLayout";
 import ExperienceWidget from "../components/ExperienceWidget";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  description: "Experience page for Andrew Ras, full stack developer. This page describes projects/work that have been completed or are in progress",
+};
 
 const ExperiencePage = () => {
   return (

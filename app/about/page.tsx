@@ -11,6 +11,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/app/components/ui/card";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  description: "About page for Andrew Ras, full stack developer",
+};
 
 const AboutPage = () => {
   return (

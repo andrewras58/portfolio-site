@@ -1,6 +1,10 @@
 import React from 'react'
 import PageLayout from '../components/PageLayout'
+import type { Metadata } from "next";
 
+export const metadata: Metadata = {
+  description: "Blog page for Andrew Ras, full stack developer. This page is currently in progress but will eventually become a blog",
+};
 const BlogPage = () => {
   return (
     <PageLayout title='Blog' borderColor='#9FC164'>

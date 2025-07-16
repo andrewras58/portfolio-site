@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import React from 'react'
-import HoverComponent from './HoverComponent'
 
 const CloseButton = () => {
   return (
