@@ -30,6 +30,7 @@ type formData = z.infer<typeof schema>;
 
 const ContactForm = () => {
   const [loading, setLoading] = useState(false);
+  const [hasSubmitted, setHasSubmitted] = useState(false);
 
   const form = useForm<formData>({
     resolver: zodResolver(schema),
@@ -55,7 +56,7 @@ const ContactForm = () => {
         throw new Error(res.statusText);
       }
       toast.success("Form successfully submitted!")
-      form.reset();
+      setHasSubmitted(true);
     } catch (err) {
       toast.error("Form failed " + err);
     } finally {
@@ -63,23 +64,32 @@ const ContactForm = () => {
     }
   };
 
+  if (hasSubmitted) {
+    return (
+      <div className="flex flex-col items-center justify-center h-full">
+        <h2 className="text-2xl font-bold mb-4">Thank you for your message!</h2>
+        <p className="text-lg">I will get back to you as soon as possible.</p>
+      </div>
+    );
+  }
+
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
         className="space-y-8 w-full h-full max-w-3xl p-5 flex flex-col items-center"
       >
-        <FormDescription>
-          You can get in touch with me by sending a message below!
+        <FormDescription className="md:text-2xl text-center">
+          You can get in touch by filling out the form below!
         </FormDescription>
         <FormField
           control={form.control}
           name="name"
           render={({ field }) => (
             <FormItem className="w-full">
-              <FormLabel>Name</FormLabel>
+              <FormLabel className="md:text-2xl">Name</FormLabel>
               <FormControl>
-                <Input {...field} />
+                <Input {...field} className="md:text-4xl h-fit"/>
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -90,9 +100,9 @@ const ContactForm = () => {
           name="email"
           render={({ field }) => (
             <FormItem className="w-full">
-              <FormLabel>Email</FormLabel>
+              <FormLabel className="md:text-2xl">Email</FormLabel>
               <FormControl>
-                <Input {...field} />
+                <Input {...field} className="md:text-4xl h-fit"/>
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -103,9 +113,9 @@ const ContactForm = () => {
           name="message"
           render={({ field }) => (
             <FormItem className="w-full">
-              <FormLabel>Message</FormLabel>
+              <FormLabel className="md:text-2xl">Message</FormLabel>
               <FormControl>
-                <Textarea {...field} className="resize-none" />
+                <Textarea {...field} className="resize-none md:text-4xl md:h-48" />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -129,7 +139,7 @@ const ContactForm = () => {
         <Button
           disabled={loading}
           type="submit"
-          className="cursor-pointer w-full"
+          className="cursor-pointer w-full md:text-2xl h-fit"
         >
           {loading ? "Loading..." : "Submit"}
         </Button>

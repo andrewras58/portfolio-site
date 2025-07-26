@@ -5,15 +5,16 @@ import { toast } from "sonner";
 
 const WelcomeToast = () => {
   useEffect(() => {
-    if (!sessionStorage.getItem("hasClosedControls")) {
+    if (!sessionStorage.getItem("hasSeenControls")) {
       toast.info("Controls", {
         description: "Click on the planets to explore different sections.",
         action: {
           label: "Close",
-          onClick: () => sessionStorage.setItem("hasClosedControls", "true"),
+          onClick: () => {},
         },
       });
     }
+    sessionStorage.setItem("hasSeenControls", "true");
   }, []);
   return null;
 };

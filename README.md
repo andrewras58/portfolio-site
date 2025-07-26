@@ -1,8 +1,6 @@
 Personal Portfolio Website (andrewras.dev)
 
 todo:
-  - fill out the about page
-  - think of a way to have an information card or something like that as a guide
-  - think of how to make the design mobile friendly (how to present without hovers to show which page)
+  - Assign the info button in the top right to something (like a changelog or a credits page)
+  - think of how to make the design mobile friendly
   - how to implement page transitions
-  - make the form disappear after submitting?

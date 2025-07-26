@@ -42,9 +42,9 @@ const ExperienceWidget = ({
         <p>{description}</p>
       </CardContent>
       <CardFooter>
-        <ul className="flex justify-center items-center">
+        <ul className="flex justify-center items-center flex-wrap w-full gap-1">
           {techList.map((value, index) => (
-            <li key={index}><Image src={value} className="h-6 w-auto m-0.5"  alt="A technology I used" height={20} width={50}/></li>
+            <li key={index}><Image src={value} className="h-6 w-auto"  alt="A technology I used" height={20} width={50}/></li>
           ))}
         </ul>
       </CardFooter>
