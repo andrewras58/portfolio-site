@@ -2,7 +2,6 @@ import LinkPlanet from "./components/LinkPlanet";
 import Image from "next/image";
 import WelcomeToast from "./components/WelcomeToast";
 import type { Metadata } from "next";
-import InfoButton from "./components/InfoButton";
 
 export const metadata: Metadata = {
   title: "Andrew Ras | Full Stack Developer",
@@ -14,7 +13,6 @@ export default function Home() {
     <div>
       <main className="flex justify-center items-center h-screen p-10">
         <WelcomeToast />
-        <InfoButton />
         <div className="absolute top-1/3 left-1/3 transform -translate-x-1/3 -translate-y-1/3">
           <LinkPlanet link="contact" image="/neptune.svg" name="Contact" />
         </div>
