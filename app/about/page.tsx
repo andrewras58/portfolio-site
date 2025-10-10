@@ -224,6 +224,17 @@ const AboutPage = () => {
               </ul>
             </div>
           </div>
+          <div className="flex flex-col items-center m-4">
+            <span className="mb-4">My Resume (click to view!)</span>
+            <Link href={"https://drive.google.com/file/d/1qVQc7UN8rJUooKh_pzv69DW5LoLxHTfk/view?usp=sharing"} target="_blank" className="border-2 border-black hover:scale-102 transition-transform duration-100">
+              <Image
+                height={850}
+                width={850}
+                src={"/resume.png"}
+                alt="Resume - Click to view"
+              />
+            </Link>
+          </div>
         </div>
       </div>
     </PageLayout>
