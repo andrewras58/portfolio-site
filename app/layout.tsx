@@ -3,6 +3,7 @@ import "./globals.css";
 import StarryBackground from "./components/StarryBackground";
 import { Toaster } from "@/app/components/ui/sonner";
 import { ViewTransitions } from "next-view-transitions";
+import { Analytics } from "@vercel/analytics/next"
 
 
 export const metadata: Metadata = {
@@ -22,6 +23,7 @@ export default function RootLayout({
           <Toaster position="top-center" richColors/>
           <StarryBackground />
           {children}
+          <Analytics />
         </body>
       </html>
     </ViewTransitions>
