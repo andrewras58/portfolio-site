@@ -12,6 +12,19 @@ const ExperiencePage = () => {
     <PageLayout title="Experience" borderColor="#C1440E">
       <div className="grid gap-6 mt-2">
         <ExperienceWidget
+          title="Pointcache"
+          link="https://www.pointcache.com"
+          date="November 2025 - Present"
+          description="I created this website as a personal project in order to keep track of credit cards and which ones offer the best rewards and benefits for different spending categories. It is still in active development and new features are planned such as custom credit card setups, user logins, and more."
+          picture="/pointcache.png"
+          techList={[
+            "/nextjs.svg",
+            "/tailwind.svg",
+            "/cloudflare.svg",
+            "/vercel.svg"
+          ]}
+        />
+        <ExperienceWidget
           title="Personal Portfolio"
           link="https://andrewras.dev"
           date="July 2025"
@@ -26,7 +39,7 @@ const ExperiencePage = () => {
         />
         <ExperienceWidget
           title="Global Access Litigation Services"
-          link="https://galscr.com"
+          link="https://www.galscr.com"
           date="April 2025"
           description="I worked with a court reporting agency to develop and deploy their current website. It is a dockerized NextJS project for the frontend/backend hosted on AWS EC2. I originally made a Django-based website but this is a remake which better leverages what I have learned as a web developer since I first worked with them. I am still on call for any features they wish to add to the site, like E-Commerse options or updating content."
           picture="/galscr.png"
